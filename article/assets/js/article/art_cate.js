@@ -32,7 +32,10 @@ $('body').on('submit', '#form-add', function (e) {
         url: "/my/article/addcates",
         data: $(this).serialize(),
         success: res => {
-            console.log(res);
+            if (res.status !== 0) return layer.msg("新增分类失败！");
+            initArtCateList();
+            layer.msg("新增分类成功！");
+            layer.close(indexAdd);
         }
     })
 })
